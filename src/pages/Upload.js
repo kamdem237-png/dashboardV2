@@ -55,6 +55,7 @@ const Upload = () => {
     try {
       const response = await fetch('https://dashboard-etudiant.free.nf/api/upload.php', {
         method: 'POST',
+        mode: 'cors',
         body: data
       });
 
