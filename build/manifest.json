@@ -1,0 +1,24 @@
+{
+  "short_name": "Dashboard RH",
+  "name": "Dashboard RH - Gestion de salles de classe",
+  "icons": [
+    {
+      "src": "icon-192.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icon-512.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#667eea",
+  "background_color": "#ffffff",
+  "orientation": "portrait",
+  "description": "Gérez efficacement vos tableaux de bord RH pour les salles de classe"
+}

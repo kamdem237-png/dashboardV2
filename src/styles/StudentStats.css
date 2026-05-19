@@ -1,0 +1,345 @@
+.student-stats {
+  background: white;
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+.stats-empty {
+  background: #f8f9fa;
+  border-radius: 15px;
+  padding: 40px;
+  text-align: center;
+  color: #7f8c8d;
+  font-style: italic;
+}
+
+/* Performance Overview */
+.stats-overview h3,
+.main-stats h3,
+.temporal-stats h3,
+.specialized-stats h3,
+.performance-indicators h3 {
+  font-size: 1.5rem;
+  color: #2c3e50;
+  margin: 0 0 20px 0;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.performance-card {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 25px;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 15px;
+  border-left: 5px solid #667eea;
+}
+
+.performance-icon {
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.performance-content h4 {
+  font-size: 1.3rem;
+  color: #2c3e50;
+  margin: 0 0 10px 0;
+}
+
+.performance-level {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.performance-description {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin: 0;
+}
+
+/* Main Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.stat-card {
+  padding: 25px;
+  border-radius: 15px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+
+.stat-card.presence {
+  background: linear-gradient(135deg, #d4edda, #c3e6cb);
+  border: 2px solid #28a745;
+}
+
+.stat-card.absence {
+  background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+  border: 2px solid #dc3545;
+}
+
+.stat-card.justified {
+  background: linear-gradient(135deg, #fff3cd, #ffeaa7);
+  border: 2px solid #ffc107;
+}
+
+.stat-card.sessions {
+  background: linear-gradient(135deg, #d1ecf1, #bee5eb);
+  border: 2px solid #17a2b8;
+}
+
+.stat-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #495057;
+}
+
+.stat-header i {
+  font-size: 1.5rem;
+}
+
+.stat-value {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 10px;
+}
+
+.stat-rate {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #7f8c8d;
+}
+
+/* Temporal Stats */
+.timeline-summary {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  transition: background 0.3s ease;
+}
+
+.timeline-item:hover {
+  background: #e9ecef;
+}
+
+.timeline-item i {
+  font-size: 2rem;
+  color: #667eea;
+  flex-shrink: 0;
+}
+
+.timeline-item p {
+  margin: 0 0 5px 0;
+  color: #7f8c8d;
+  font-size: 0.9rem;
+}
+
+.timeline-item strong {
+  color: #2c3e50;
+  font-size: 1.1rem;
+}
+
+/* Specialized Stats */
+.specialized-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+}
+
+.specialized-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px 20px;
+  background: #f8f9fa;
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  text-align: center;
+}
+
+.specialized-card:hover {
+  background: #e9ecef;
+  transform: translateY(-3px);
+}
+
+.specialized-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+.specialized-content h4 {
+  font-size: 1.1rem;
+  color: #2c3e50;
+  margin: 0 0 10px 0;
+  font-weight: 600;
+}
+
+.specialized-value {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #667eea;
+  margin: 0;
+}
+
+/* Performance Indicators */
+.indicators-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.indicator {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.indicator-label {
+  min-width: 120px;
+  font-weight: 600;
+  color: #495057;
+}
+
+.indicator-bar {
+  flex: 1;
+  height: 20px;
+  background: #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.indicator-fill {
+  height: 100%;
+  border-radius: 10px;
+  transition: width 0.5s ease;
+  position: relative;
+}
+
+.indicator-fill.presence {
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
+}
+
+.indicator-fill.justified {
+  background: linear-gradient(90deg, #f39c12, #f1c40f);
+}
+
+.indicator-fill.neutral {
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.indicator-value {
+  min-width: 60px;
+  font-weight: 700;
+  color: #2c3e50;
+  text-align: right;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .student-stats {
+    padding: 20px;
+  }
+
+  .performance-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .performance-icon {
+    font-size: 2.5rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+
+  .stat-card {
+    padding: 20px;
+  }
+
+  .stat-value {
+    font-size: 2rem;
+  }
+
+  .timeline-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .specialized-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .indicator {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .indicator-label {
+    min-width: auto;
+  }
+
+  .indicator-bar {
+    width: 100%;
+  }
+
+  .indicator-value {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .specialized-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 15px;
+  }
+
+  .stat-value {
+    font-size: 1.8rem;
+  }
+}

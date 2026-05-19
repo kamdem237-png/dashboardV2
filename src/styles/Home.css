@@ -1,0 +1,184 @@
+.home-page {
+  padding: 20px 0;
+}
+
+.welcome-section {
+  text-align: center;
+  margin-bottom: 50px;
+  padding: 40px 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-section h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.welcome-text {
+  font-size: 1.1rem;
+  max-width: 800px;
+  margin: 0 auto 30px;
+  line-height: 1.6;
+  opacity: 0.95;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 50px;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #667eea, #764ba2);
+}
+
+.stat-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.stat-card.favorable::before {
+  background: linear-gradient(90deg, #27ae60, #2ecc71);
+}
+
+.stat-card.unfavorable::before {
+  background: linear-gradient(90deg, #e74c3c, #c0392b);
+}
+
+.stat-card h3 {
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #2c3e50;
+}
+
+.stat-card p {
+  font-size: 1.1rem;
+  color: #7f8c8d;
+  margin-bottom: 15px;
+}
+
+.stat-icon {
+  font-size: 2.5rem;
+  opacity: 0.2;
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+}
+
+.transactions-section {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.transactions-section h2 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 25px;
+  font-weight: 700;
+}
+
+.transactions-section .table {
+  margin-bottom: 0;
+}
+
+.transactions-section .table thead th {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-weight: 600;
+  padding: 15px;
+  border: none;
+}
+
+.transactions-section .table tbody td {
+  padding: 15px;
+  vertical-align: middle;
+}
+
+.transactions-section .table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.transactions-section .table tbody tr:hover {
+  background-color: #f8f9fa;
+}
+
+@media (max-width: 768px) {
+  .welcome-section {
+    padding: 30px 15px;
+  }
+
+  .welcome-section h1 {
+    font-size: 1.8rem;
+  }
+
+  .welcome-text {
+    font-size: 1rem;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .stat-card {
+    padding: 25px 20px;
+  }
+
+  .stat-card h3 {
+    font-size: 2.5rem;
+  }
+
+  .transactions-section {
+    padding: 20px 15px;
+  }
+
+  .transactions-section h2 {
+    font-size: 1.5rem;
+  }
+
+  .transactions-section .table thead th,
+  .transactions-section .table tbody td {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .welcome-section h1 {
+    font-size: 1.5rem;
+  }
+
+  .stat-card h3 {
+    font-size: 2rem;
+  }
+
+  .transactions-section .table-responsive {
+    font-size: 0.85rem;
+  }
+}

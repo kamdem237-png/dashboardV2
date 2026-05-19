@@ -1,0 +1,10 @@
+This is a placeholder file for the favicon.
+To create the actual favicon:
+1. Create a 32x32 or 64x64 ICO file with a graph/graduation cap icon
+2. Save it as favicon.ico in the public folder
+3. Use tools like Canva, Figma, or online favicon generators
+
+Recommended design:
+- Background: #2c3e50 (dark blue)
+- Icon: White graduation cap or graph icon
+- Style: Clean, modern, minimalist

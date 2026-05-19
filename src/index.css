@@ -1,0 +1,184 @@
+:root {
+  --primary-color: #2c3e50;
+  --secondary-color: #3498db;
+  --accent-color: #e74c3c;
+  --success-color: #27ae60;
+  --warning-color: #f39c12;
+  --light-bg: #f8f9fa;
+  --dark-text: #2c3e50;
+  --light-text: #ecf0f1;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--light-bg);
+  color: var(--dark-text);
+  min-height: 100vh;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary-color);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary-color);
+}
+
+/* Card styling */
+.card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Button styling */
+.btn {
+  border-radius: 8px;
+  padding: 10px 20px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.btn-success {
+  background-color: var(--success-color);
+  border-color: var(--success-color);
+}
+
+.btn-success:hover {
+  background-color: #219150;
+  transform: translateY(-2px);
+}
+
+/* Input styling */
+.form-control {
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  padding: 12px;
+  transition: border-color 0.3s ease;
+}
+
+.form-control:focus {
+  border-color: var(--secondary-color);
+  box-shadow: 0 0 0 0.2rem rgba(52, 152, 219, 0.25);
+}
+
+/* Table styling */
+.table {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table thead {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+.table thead th {
+  border: none;
+  padding: 15px;
+  font-weight: 600;
+}
+
+.table tbody tr {
+  transition: background-color 0.3s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f0f3f5;
+}
+
+/* Stat card styling */
+.stat-card {
+  background: linear-gradient(135deg, var(--secondary-color), var(--primary-color));
+  color: white;
+  padding: 25px;
+  border-radius: 12px;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.stat-card h3 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.stat-card p {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .stat-card {
+    padding: 20px;
+  }
+  
+  .stat-card h3 {
+    font-size: 2rem;
+  }
+  
+  .card {
+    margin-bottom: 15px;
+  }
+}

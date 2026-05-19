@@ -1,0 +1,259 @@
+.upload-page {
+  padding: 20px 0;
+}
+
+.upload-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.upload-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.upload-header h1 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.upload-header p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+}
+
+.upload-card {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.upload-card .form-group {
+  margin-bottom: 30px;
+}
+
+.upload-card label {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 600;
+  color: #2c3e50;
+  font-size: 1rem;
+}
+
+.upload-card .form-control {
+  padding: 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.upload-card .form-control:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+  outline: none;
+}
+
+.file-upload-area {
+  position: relative;
+}
+
+.file-upload-area input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.file-upload-area.has-file input[type="file"] {
+  z-index: 0;
+}
+
+.file-upload-info {
+  border: 2px dashed #667eea;
+  border-radius: 10px;
+  padding: 40px;
+  text-align: center;
+  background: #f8f9fa;
+  transition: all 0.3s ease;
+}
+
+.file-upload-info:hover {
+  background: #e9ecef;
+  border-color: #764ba2;
+}
+
+.file-upload-info i {
+  font-size: 3rem;
+  color: #667eea;
+  margin-bottom: 15px;
+}
+
+.file-upload-info p {
+  color: #2c3e50;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.file-upload-info small {
+  color: #7f8c8d;
+}
+
+.file-selected {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px;
+  background: white;
+  border: 2px solid #667eea;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 1;
+}
+
+.file-selected i {
+  font-size: 2rem;
+  color: #27ae60;
+  margin-right: 15px;
+}
+
+.file-selected span {
+  flex: 1;
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 1rem;
+  word-break: break-all;
+}
+
+.file-selected .btn-outline-danger {
+  border-color: #e74c3c;
+  color: #e74c3c;
+}
+
+.file-selected .btn-outline-danger:hover {
+  background: #e74c3c;
+  color: white;
+}
+
+.format-info {
+  background: #f8f9fa;
+  border-radius: 10px;
+  padding: 25px;
+  margin-bottom: 30px;
+}
+
+.format-info h4 {
+  color: #2c3e50;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.format-info p {
+  color: #7f8c8d;
+  margin-bottom: 15px;
+}
+
+.format-table .table {
+  margin-bottom: 0;
+  background: white;
+}
+
+.format-table .table thead th {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+  font-weight: 600;
+  border: none;
+}
+
+.format-table .table tbody td {
+  vertical-align: middle;
+}
+
+.upload-actions {
+  text-align: center;
+}
+
+.upload-actions .btn-lg {
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.generate-dashboard-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.upload-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  background: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 10px;
+  color: #155724;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .upload-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .upload-card {
+    padding: 25px 20px;
+  }
+
+  .file-upload-info {
+    padding: 30px 20px;
+  }
+
+  .file-upload-info i {
+    font-size: 2.5rem;
+  }
+
+  .format-info {
+    padding: 20px 15px;
+  }
+
+  .format-table .table {
+    font-size: 0.85rem;
+  }
+
+  .upload-actions .btn-lg {
+    padding: 12px 30px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .upload-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .upload-header p {
+    font-size: 1rem;
+  }
+
+  .format-table .table {
+    font-size: 0.75rem;
+  }
+
+  .format-table .table thead th,
+  .format-table .table tbody td {
+    padding: 8px 5px;
+  }
+}

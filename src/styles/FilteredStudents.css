@@ -1,0 +1,108 @@
+.filtered-students-page {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.page-header {
+  margin-bottom: 2rem;
+  padding: 30px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 20px;
+  color: white;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.page-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1rem 0 0.5rem 0;
+  color: white;
+}
+
+.page-header p {
+  color: white;
+  margin: 0;
+  opacity: 0.95;
+}
+
+.students-table-container {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.table {
+  margin: 0;
+}
+
+.table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.table thead th {
+  border: none;
+  padding: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+
+.table tbody tr {
+  transition: all 0.2s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f8f9fa;
+  transform: scale(1.01);
+}
+
+.table tbody td {
+  padding: 1rem;
+  vertical-align: middle;
+  border-top: 1px solid #e9ecef;
+}
+
+.btn-sm {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: #7f8c8d;
+}
+
+.empty-state i {
+  font-size: 4rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.fade-in {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
