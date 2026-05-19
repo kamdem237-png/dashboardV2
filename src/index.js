@@ -12,9 +12,5 @@ root.render(
   </React.StrictMode>
 );
 
-// Disable service worker in development
-if (process.env.NODE_ENV === 'production') {
-  serviceWorkerRegistration.register();
-} else {
-  serviceWorkerRegistration.unregister();
-}
+// Disable service worker to avoid intercepting API requests
+serviceWorkerRegistration.unregister();
