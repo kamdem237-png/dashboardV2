@@ -50,10 +50,10 @@ const Upload = () => {
     data.append('titre', formData.titre);
     data.append('file', formData.file);
 
-    console.log('Sending request to: http://dashboard-etudiant.free.nf/api/upload.php');
+    console.log('Sending request to: https://dashboard-etudiant.free.nf/api/upload.php');
 
     try {
-      const response = await fetch('http://dashboard-etudiant.free.nf/api/upload.php', {
+      const response = await fetch('https://dashboard-etudiant.free.nf/api/upload.php', {
         method: 'POST',
         body: data
       });

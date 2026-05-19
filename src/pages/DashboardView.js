@@ -93,7 +93,7 @@ const DashboardView = () => {
     console.log('Dashboard ID:', id);
 
     try {
-      const response = await axios.get(`http://dashboard-etudiant.free.nf/api/get_dashboard.php?id=${id}`);
+      const response = await axios.get(`https://dashboard-etudiant.free.nf/api/get_dashboard.php?id=${id}`);
       console.log('RAW API RESPONSE:', response);
       console.log('RESPONSE DATA:', response.data);
 

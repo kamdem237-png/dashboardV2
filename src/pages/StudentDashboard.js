@@ -40,7 +40,7 @@ const StudentDashboard = () => {
     }
 
     try {
-      const response = await axios.get(`http://dashboard-etudiant.free.nf/api/get_student.php?id=${id}`);
+      const response = await axios.get(`https://dashboard-etudiant.free.nf/api/get_student.php?id=${id}`);
       console.log('RAW STUDENT RESPONSE:', response);
       console.log('RESPONSE DATA:', response.data);
 

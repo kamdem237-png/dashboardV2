@@ -27,7 +27,7 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('http://dashboard-etudiant.free.nf/api/login.php', formData);
+      const response = await axios.post('https://dashboard-etudiant.free.nf/api/login.php', formData);
       if (response.data.user_id) {
         login(response.data);
         navigate('/');

@@ -40,7 +40,7 @@ const Profile = () => {
     }
 
     try {
-      await axios.put('http://dashboard-etudiant.free.nf/api/update_profile.php', updateData);
+      await axios.put('https://dashboard-etudiant.free.nf/api/update_profile.php', updateData);
       setSuccess('Profil mis à jour avec succès !');
       updateUser({
         ...user,

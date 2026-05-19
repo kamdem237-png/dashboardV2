@@ -45,7 +45,7 @@ const FilteredStudents = () => {
   const fetchFilteredStudents = async (nextDashboardId, nextCategory) => {
     setLoading(true);
     try {
-      const response = await axios.get(`http://dashboard-etudiant.free.nf/api/get_dashboard.php?id=${nextDashboardId}`);
+      const response = await axios.get(`https://dashboard-etudiant.free.nf/api/get_dashboard.php?id=${nextDashboardId}`);
       const allStudents = response.data?.data?.students || [];
       const normalizedCategory = normalizeValue(nextCategory);
 

@@ -21,7 +21,7 @@ const Home = () => {
 
   const fetchDashboardData = async () => {
     try {
-      const response = await axios.get(`http://dashboard-etudiant.free.nf/api/get_dashboards.php?user_id=${user.user_id}`);
+      const response = await axios.get(`https://dashboard-etudiant.free.nf/api/get_dashboards.php?user_id=${user.user_id}`);
       const dashboards = response.data;
 
       setStats({
