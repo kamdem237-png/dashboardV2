@@ -27,13 +27,25 @@ const Login = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('https://dashboard-etudiant.free.nf/api/login.php', formData);
+      const fd = new FormData();
+      fd.append('email', formData.email);
+      fd.append('password', formData.password);
+
+      const response = await axios.post('https://dashboard-etudiant.free.nf/api/login.php', fd);
       if (response.data.user_id) {
         login(response.data);
         navigate('/');
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Erreur de connexion');
+      if (err.code === 'ERR_NETWORK' || !err.response) {
+        setError('Impossible de contacter le serveur. Vérifiez votre connexion internet.');
+      } else if (err.response?.status === 401) {
+        setError('Email ou mot de passe incorrect.');
+      } else if (err.response?.status === 500) {
+        setError('Erreur serveur. Veuillez réessayer plus tard.');
+      } else {
+        setError(err.response?.data?.message || 'Erreur de connexion');
+      }
     } finally {
       setLoading(false);
     }

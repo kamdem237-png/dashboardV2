@@ -55,7 +55,6 @@ const Upload = () => {
     try {
       const response = await fetch('https://dashboard-etudiant.free.nf/api/upload.php', {
         method: 'POST',
-        mode: 'cors',
         body: data
       });
 
@@ -90,7 +89,15 @@ const Upload = () => {
       }
     } catch (err) {
       console.error('ERROR:', err);
-      setError(err.message || 'Erreur lors de l\'upload');
+      if (err.code === 'ERR_NETWORK' || !err.response) {
+        setError('Impossible de contacter le serveur. Vérifiez votre connexion internet.');
+      } else if (err.response?.status === 500) {
+        setError('Erreur serveur lors de l\'upload. Veuillez réessayer.');
+      } else if (err.response?.status === 413) {
+        setError('Fichier trop volumineux. Veuillez réduire la taille du fichier.');
+      } else {
+        setError(err.message || 'Erreur lors de l\'upload');
+      }
     } finally {
       setLoading(false);
       console.log('=== SUBMIT END ===');

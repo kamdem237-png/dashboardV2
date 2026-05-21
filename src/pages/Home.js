@@ -16,34 +16,39 @@ const Home = () => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetchDashboardData();
-  }, []);
+    const fetchDashboardData = async () => {
+      try {
+        const response = await axios.get(`https://dashboard-etudiant.free.nf/api/get_dashboards.php?user_id=${user.user_id}`);
+        const dashboards = response.data;
 
-  const fetchDashboardData = async () => {
-    try {
-      const response = await axios.get(`https://dashboard-etudiant.free.nf/api/get_dashboards.php?user_id=${user.user_id}`);
-      const dashboards = response.data;
+        setStats({
+          totalFiles: dashboards.length,
+          favorableResults: Math.floor(dashboards.length * 0.7),
+          unfavorableResults: Math.ceil(dashboards.length * 0.3)
+        });
 
-      setStats({
-        totalFiles: dashboards.length,
-        favorableResults: Math.floor(dashboards.length * 0.7),
-        unfavorableResults: Math.ceil(dashboards.length * 0.3)
-      });
+        // Simuler les transactions récentes
+        const transactions = dashboards.slice(0, 5).map(dashboard => ({
+          id: dashboard.id,
+          titre: dashboard.titre,
+          date: new Date(dashboard.date_creation).toLocaleDateString('fr-FR'),
+          status: Math.random() > 0.3 ? 'Favorable' : 'Défavorable'
+        }));
+        setRecentTransactions(transactions);
+      } catch (error) {
+        console.error('Error fetching dashboard data:', error);
+        if (error.code === 'ERR_NETWORK' || !error.response) {
+          console.error('Network error - backend may be unavailable');
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
 
-      // Simuler les transactions récentes
-      const transactions = dashboards.slice(0, 5).map(dashboard => ({
-        id: dashboard.id,
-        titre: dashboard.titre,
-        date: new Date(dashboard.date_creation).toLocaleDateString('fr-FR'),
-        status: Math.random() > 0.3 ? 'Favorable' : 'Défavorable'
-      }));
-      setRecentTransactions(transactions);
-    } catch (error) {
-      console.error('Error fetching dashboard data:', error);
-    } finally {
-      setLoading(false);
+    if (user?.user_id) {
+      fetchDashboardData();
     }
-  };
+  }, [user?.user_id]);
 
   const handleStatClick = (filter) => {
     navigate('/history', { state: { filter } });

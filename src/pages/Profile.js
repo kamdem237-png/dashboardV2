@@ -28,19 +28,17 @@ const Profile = () => {
     setSuccess('');
     setLoading(true);
 
-    const updateData = {
-      user_id: user.user_id,
-      nom: formData.nom,
-      prenom: formData.prenom,
-      email: formData.email
-    };
-
+    const fd = new FormData();
+    fd.append('user_id', user.user_id);
+    fd.append('nom', formData.nom);
+    fd.append('prenom', formData.prenom);
+    fd.append('email', formData.email);
     if (formData.password) {
-      updateData.password = formData.password;
+      fd.append('password', formData.password);
     }
 
     try {
-      await axios.put('https://dashboard-etudiant.free.nf/api/update_profile.php', updateData);
+      await axios.post('https://dashboard-etudiant.free.nf/api/update_profile.php', fd);
       setSuccess('Profil mis à jour avec succès !');
       updateUser({
         ...user,
@@ -50,7 +48,13 @@ const Profile = () => {
       });
       setFormData({ ...formData, password: '' });
     } catch (err) {
-      setError(err.response?.data?.message || 'Erreur lors de la mise à jour');
+      if (err.code === 'ERR_NETWORK' || !err.response) {
+        setError('Impossible de contacter le serveur. Vérifiez votre connexion internet.');
+      } else if (err.response?.status === 500) {
+        setError('Erreur serveur. Veuillez réessayer plus tard.');
+      } else {
+        setError(err.response?.data?.message || 'Erreur lors de la mise à jour');
+      }
     } finally {
       setLoading(false);
     }

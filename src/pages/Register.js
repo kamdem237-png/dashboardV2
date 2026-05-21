@@ -29,13 +29,27 @@ const Register = () => {
     setLoading(true);
 
     try {
-      const response = await axios.post('https://dashboard-etudiant.free.nf/api/register.php', formData);
+      const fd = new FormData();
+      fd.append('nom', formData.nom);
+      fd.append('prenom', formData.prenom);
+      fd.append('email', formData.email);
+      fd.append('password', formData.password);
+
+      const response = await axios.post('https://dashboard-etudiant.free.nf/api/register.php', fd);
       if (response.data.user_id) {
         login(response.data);
         navigate('/');
       }
     } catch (err) {
-      setError(err.response?.data?.message || 'Erreur d\'inscription');
+      if (err.code === 'ERR_NETWORK' || !err.response) {
+        setError('Impossible de contacter le serveur. Vérifiez votre connexion internet.');
+      } else if (err.response?.status === 400) {
+        setError(err.response?.data?.message || 'Données invalides');
+      } else if (err.response?.status === 500) {
+        setError('Erreur serveur. Veuillez réessayer plus tard.');
+      } else {
+        setError(err.response?.data?.message || 'Erreur d\'inscription');
+      }
     } finally {
       setLoading(false);
     }
