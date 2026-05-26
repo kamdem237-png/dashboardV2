@@ -62,7 +62,7 @@ const Register = () => {
           <div className="auth-logo">
             <i className="bi bi-graph-up-arrow"></i>
           </div>
-          <h1>Dashboard RH</h1>
+          <h1>EduManage</h1>
           <p>Créez votre compte pour commencer</p>
         </div>
 

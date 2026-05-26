@@ -1,4 +1,4 @@
-const CACHE_NAME = 'dashboard-rh-v1';
+const CACHE_NAME = 'edumanage-v2';
 const urlsToCache = [
   '/',
   '/index.html',
@@ -6,6 +6,7 @@ const urlsToCache = [
 ];
 
 self.addEventListener('install', (event) => {
+  self.skipWaiting();
   event.waitUntil(
     caches.open(CACHE_NAME)
       .then((cache) => cache.addAll(urlsToCache))
@@ -13,40 +14,39 @@ self.addEventListener('install', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
-  // Skip API requests - let them go directly to the network
-  if (event.request.url.includes('/api/')) {
+  // Skip API requests and navigation requests for SPA routing
+  if (event.request.url.includes('/api/') || event.request.mode === 'navigate') {
+    event.respondWith(
+      fetch(event.request).catch(() => caches.match('/index.html'))
+    );
     return;
   }
 
   event.respondWith(
-    caches.match(event.request)
+    fetch(event.request)
       .then((response) => {
-        if (response) {
-          return response;
-        }
-        return fetch(event.request).catch((error) => {
-          console.error('Service worker fetch failed:', error);
-          // Return a basic offline response for non-API requests
-          return new Response('Offline - Veuillez vérifier votre connexion', {
-            status: 503,
-            statusText: 'Service Unavailable'
+        if (response && response.status === 200) {
+          const responseToCache = response.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseToCache);
           });
-        });
+        }
+        return response;
       })
+      .catch(() => caches.match(event.request))
   );
 });
 
 self.addEventListener('activate', (event) => {
-  const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
     caches.keys().then((cacheNames) => {
       return Promise.all(
         cacheNames.map((cacheName) => {
-          if (cacheWhitelist.indexOf(cacheName) === -1) {
+          if (cacheName !== CACHE_NAME) {
             return caches.delete(cacheName);
           }
         })
       );
-    })
+    }).then(() => self.clients.claim())
   );
 });

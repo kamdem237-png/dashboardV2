@@ -37,7 +37,7 @@ const HowItWorks = () => {
       description: 'Analyse instantanée de vos fichiers sans attente.'
     },
     {
-      icon: 'bi-device-mobile',
+      icon: 'bi-phone',
       title: 'Responsive',
       description: 'Accessible sur PC, tablette et mobile comme une vraie application.'
     },
@@ -52,7 +52,7 @@ const HowItWorks = () => {
     <div className="how-it-works-page fade-in">
       <div className="page-header">
         <h1>Comment ça marche ?</h1>
-        <p>Découvrez comment utiliser Dashboard RH en 4 étapes simples</p>
+        <p>Découvrez comment utiliser EduManage en 4 étapes simples</p>
       </div>
 
       <div className="steps-section">

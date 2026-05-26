@@ -26,7 +26,7 @@ const Header = ({ toggleSidebar }) => {
         </button>
         <div className="logo">
           <i className="bi bi-graph-up-arrow"></i>
-          <span className="logo-text">Dashboard</span>
+          <span className="logo-text">EduManage</span>
         </div>
       </div>
       <div className="header-right">
