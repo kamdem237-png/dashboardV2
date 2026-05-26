@@ -119,8 +119,120 @@
   margin-bottom: 20px;
 }
 
+.card-verdict {
+  margin-bottom: 15px;
+}
+
 .card-actions {
   margin-top: auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+/* Delete Confirmation Modal */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  animation: fadeInOverlay 0.2s ease;
+}
+
+@keyframes fadeInOverlay {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal-dialog-custom {
+  background: white;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 450px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  animation: slideIn 0.3s ease;
+  overflow: hidden;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.modal-header-custom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 25px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.modal-header-custom h3 {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0;
+}
+
+.modal-close-btn {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  cursor: pointer;
+  padding: 5px;
+  transition: color 0.2s;
+}
+
+.modal-close-btn:hover {
+  color: #2c3e50;
+}
+
+.modal-body-custom {
+  padding: 30px 25px;
+  text-align: center;
+}
+
+.modal-icon-warning {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #fff3cd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px;
+}
+
+.modal-icon-warning i {
+  font-size: 1.8rem;
+  color: #f39c12;
+}
+
+.modal-body-custom p {
+  margin-bottom: 10px;
+  color: #2c3e50;
+  font-size: 1.05rem;
+}
+
+.modal-footer-custom {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  padding: 15px 25px;
+  border-top: 1px solid #e9ecef;
 }
 
 .empty-state {

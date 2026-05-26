@@ -11,6 +11,7 @@ import FilteredStudents from './pages/FilteredStudents';
 import Profile from './pages/Profile';
 import History from './pages/History';
 import HowItWorks from './pages/HowItWorks';
+import AbsenceRanking from './pages/AbsenceRanking';
 import { AuthProvider, useAuth } from './context/AuthContext';
 
 function ProtectedRoute({ children }) {
@@ -42,6 +43,7 @@ function App() {
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/history" element={<History />} />
                     <Route path="/how-it-works" element={<HowItWorks />} />
+                    <Route path="/absence-ranking" element={<AbsenceRanking />} />
                   </Routes>
                 </DashboardLayout>
               </ProtectedRoute>

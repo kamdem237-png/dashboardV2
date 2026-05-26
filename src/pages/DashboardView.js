@@ -478,7 +478,7 @@ const DashboardView = () => {
         </div>
 
         <div className="chart-card bar-chart-card">
-          <h3>Top 5 absences</h3>
+          <h3>Classement des absences</h3>
           <div className="bar-chart-container">
             <ResponsiveContainer width="100%" height={300}>
               <BarChart data={topAbsences} layout="vertical">
@@ -502,6 +502,12 @@ const DashboardView = () => {
               </div>
             ))}
           </div>
+          <div className="text-center mt-3">
+            <button className="btn btn-primary" onClick={() => navigate('/absence-ranking', { state: { dashboardId: id } })}>
+              <i className="bi bi-bar-chart me-2"></i>
+              Voir le classement complet
+            </button>
+          </div>
         </div>
       </div>
 
@@ -516,6 +522,7 @@ const DashboardView = () => {
           <table className="table table-hover">
             <thead>
               <tr>
+                <th>#</th>
                 {studentTableHeaders.map((col, index) => (
                   <th key={index}>{col}</th>
                 ))}
@@ -527,10 +534,11 @@ const DashboardView = () => {
                 [...dashboardData.students]
                   .sort((a, b) => (a.name || '').localeCompare(b.name || ''))
                   .slice(0, 5)
-                  .map((student) => (
+                  .map((student, index) => (
                     <tr key={student.id}>
-                      {studentTableHeaders.map((col, index) => (
-                        <td key={`${student.id}-${col}-${index}`}>
+                      <td>{index + 1}</td>
+                      {studentTableHeaders.map((col, colIndex) => (
+                        <td key={`${student.id}-${col}-${colIndex}`}>
                           {getStudentTableValue(student, col)}
                         </td>
                       ))}
@@ -546,7 +554,7 @@ const DashboardView = () => {
                   ))
               ) : (
                 <tr>
-                  <td colSpan={studentTableHeaders.length + 1} className="text-center">Aucun étudiant trouvé</td>
+                  <td colSpan={studentTableHeaders.length + 2} className="text-center">Aucun étudiant trouvé</td>
                 </tr>
               )}
             </tbody>

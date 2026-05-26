@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import axios from 'axios';
+import '../styles/DashboardView.css';
 import '../styles/FilteredStudents.css';
 
 const TEXT = {
   students: '\u00c9tudiants',
   found: '\u00e9tudiant(s) trouv\u00e9(s)',
-  firstname: 'Pr\u00e9nom',
   noStudent: 'Aucun \u00e9tudiant trouv\u00e9',
   noMatch: 'Aucun \u00e9tudiant ne correspond \u00e0 cette cat\u00e9gorie'
 };
@@ -87,15 +87,9 @@ const FilteredStudents = () => {
 
   const getAbsenceCount = (student) => Number(student.absence || 0) + Number(student.justified || 0);
 
-  const getStageStatus = (student) => {
-    const stageValue = student.stage || student.data?.Stage || student.data?.stage;
-    return isYes(stageValue) ? 'En stage' : 'Pas de stage';
-  };
+  const getPresenceCount = (student) => Number(student.presence || 0);
 
-  const getWorkStatus = (student) => {
-    const workValue = student.work || student.data?.Travail || student.data?.work;
-    return isYes(workValue) ? 'Travailleur' : 'Sans travail';
-  };
+  const getJustifiedCount = (student) => Number(student.justified || 0);
 
   if (loading) {
     return (
@@ -109,55 +103,53 @@ const FilteredStudents = () => {
 
   return (
     <div className="filtered-students-page fade-in">
-      <div className="page-header">
-        <button className="btn btn-outline-secondary" onClick={handleBack}>
-          <i className="bi bi-arrow-left me-2"></i>
-          Retour
-        </button>
-        <h1>{TEXT.students} : {category}</h1>
-        <p>{students.length} {TEXT.found}</p>
-      </div>
-
-      <div className="students-table-container">
+      <div className="students-table-section">
+        <div className="table-header">
+          <h3>{TEXT.students} : {category} ({students.length} {TEXT.found})</h3>
+          <button className="btn btn-primary" onClick={handleBack}>
+            <i className="bi bi-arrow-left me-2"></i>
+            Retour
+          </button>
+        </div>
         <div className="table-responsive">
           <table className="table table-hover">
             <thead>
               <tr>
-                <th>Nom</th>
-                <th>{TEXT.firstname}</th>
-                <th>Heures d'absence</th>
-                <th>Statut stage</th>
-                <th>Statut travail</th>
+                <th>#</th>
+                <th>MATRICULE</th>
+                <th>NOMS ET PRENOMS</th>
+                <th>HEURES PRESENCES</th>
+                <th>HEURE ABSENCES</th>
+                <th>HEURES JUSTIFIEES</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              {students.map((student) => (
-                <tr key={student.id}>
-                  <td>{student.name || '-'}</td>
-                  <td>{student.firstname || '-'}</td>
-                  <td>{getAbsenceCount(student)}</td>
-                  <td>{getStageStatus(student)}</td>
-                  <td>{getWorkStatus(student)}</td>
-                  <td>
-                    <button className="btn btn-sm btn-primary" onClick={() => handleViewStudent(student.id)}>
-                      Voir infos
-                    </button>
-                  </td>
+              {students.length > 0 ? (
+                students.map((student, index) => (
+                  <tr key={student.id}>
+                    <td>{index + 1}</td>
+                    <td>{student.id || '-'}</td>
+                    <td>{student.name || '-'}</td>
+                    <td>{getPresenceCount(student)}</td>
+                    <td>{getAbsenceCount(student)}</td>
+                    <td>{getJustifiedCount(student)}</td>
+                    <td>
+                      <button className="btn btn-sm btn-primary" onClick={() => handleViewStudent(student.id)}>
+                        Voir infos
+                      </button>
+                    </td>
+                  </tr>
+                ))
+              ) : (
+                <tr>
+                  <td colSpan="7" className="text-center">{TEXT.noMatch}</td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
       </div>
-
-      {students.length === 0 && (
-        <div className="empty-state">
-          <i className="bi bi-inbox"></i>
-          <h3>{TEXT.noStudent}</h3>
-          <p>{TEXT.noMatch}</p>
-        </div>
-      )}
     </div>
   );
 };

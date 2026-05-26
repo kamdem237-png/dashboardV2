@@ -1,6 +1,6 @@
 {
-  "short_name": "Dashboard RH",
-  "name": "Dashboard RH - Gestion de salles de classe",
+  "short_name": "EduManage",
+  "name": "EduManage - Plateforme de gestion éducative",
   "icons": [
     {
       "src": "icon-192.svg",
@@ -17,8 +17,8 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#667eea",
+  "theme_color": "#000000",
   "background_color": "#ffffff",
   "orientation": "portrait",
-  "description": "Gérez efficacement vos tableaux de bord RH pour les salles de classe"
+  "description": "EduManage - Plateforme de gestion éducative pour les salles de classe"
 }
